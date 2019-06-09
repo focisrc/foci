@@ -52,7 +52,7 @@ computation approaches are needed in different steps.
   necessary.
 
 
-## Data Structure and Programming Paradigms
+## Visibility Data
 
 In order to satisfy the different data processing needs, `foci`
 seamless integrates different technologies and programming frameworks
@@ -124,7 +124,26 @@ M87    | ALMA-ALMA | ...  | `Vis[p,t,b,c,d]`
 M87    | ALMA-APEX | t0   | `Vis[p,t,b,c,d]`
 ...    | ...       | ...  | ...
 
-This is often referred as the "unpivotion" operation.
-Although it is possible to unpivote any dimension in the visibility
+This is often referred as the "unpivot" or "melt" operation.
+Although it is possible to unpivot any dimension in the visibility
 data array, the dense discrete labels are the more natural dimensions
 to unpivoate.
+
+
+## Data Structure and Programming Paradigms
+
+Base on the above discussion, we use `xarray.DataArray` for visibility
+array; we also subclass `xarray.DataSet` to `VisData` for our overall
+data interface.
+
+The default dimensions for visibility array are polarization
+component, time, band, channel, and subchannel.
+`Foci` provides methods to split and merge visibility arrays along
+different dimensions for a uniform interface for averaging.
+
+The default columns for `VisData` are Source, Baseline, Scan ID/Time,
+and visibility array, as listed in the above table.
+The "metadata" in the first 4 columns are enough for performing most
+of the query operations and allow us to derive the *uv* coordinates.
+`Foci` also provides methods to melt, pivot, and manipulate `VisData`
+for more complicated operations.
