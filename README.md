@@ -50,3 +50,28 @@ computation approaches are needed in different steps.
   size, is directly connected to the science.
   Hence, interactive data analysis with good data visualization is
   necessary.
+
+
+## Data Structure and Programming Paradigms
+
+In order to satisfy the different data processing needs, `foci`
+seamless integrates different technologies and programming frameworks
+into a consistent interface of visibility data.
+
+To provide a high level abstraction of the correlated visibility data,
+it is natural to separate the "sparse", point-like parameters:
+
+* Source
+* Baseline
+
+the "dense discrete" labels:
+
+* Scan
+* Band
+* Polarization component
+
+and the "dense continue" (but discretized) variables:
+
+* Time (within a scan)
+* Channel frequency
+* Subchannel frequency
