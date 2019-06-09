@@ -75,3 +75,20 @@ and the "dense continue" (but discretized) variables:
 * Time (within a scan)
 * Channel frequency
 * Subchannel frequency
+
+For sparse parameters, it is clear that we should use particle-based
+data structure.
+I.e., define fields/columns in a structure/table and populate the
+list/rows with valid values:
+
+Source | Baseline
+------ | ---------
+M87    | ALMA-ALMA
+M87    | ALMA-APEX
+...    | ...
+
+Conversely, for the dense continue variables, arrays are ideal:
+
+    VisI[time, chan, subchan]
+
+However, how to handle the dense discrete labels is less obvious.
