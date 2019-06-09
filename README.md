@@ -85,15 +85,15 @@ However, how to handle the dense discrete labels are less obvious.
 We need to consider them case-by-case and provide a well-defined
 transformation between the two different representations.
 
-Let p, s, t, b, c, and d be the indices for polarization component,
-scan, time, band, channel, and subchannel.
-If we represent p, s, and b as array dimension, a VLBI isibility data
-set can be represented by:
+Let `p`, `s`, `t`, `b`, `c`, and d be the indices for polarization
+component, scan, time, band, channel, and subchannel.
+If we represent `p`, `s`, and `b` as array dimension, a VLBI
+visibility data set can be represented by:
 
 Source | Baseline  | Visibility Data Array
 ------ | --------- | ---------------------
-M87    | ALMA-ALMA | Vis[p, s, t, b, c, d]
-M87    | ALMA-APEX | Vis[p, s, t, b, c, d]
+M87    | ALMA-ALMA | `Vis[p,s,t,b,c,d]`
+M87    | ALMA-APEX | `Vis[p,s,t,b,c,d]`
 ...    | ...       | ...
 
 There are many ways to implement the above data table in memory,
@@ -101,14 +101,14 @@ including embedding the arrays, use pointers to memory, or store all
 visibility arrays in a global array access it by the row number of the
 table.
 Anyway, to "unfold" one of these dense discrete labels, we turn the
-array dimenion into multpile columns in the data table.
-For example, if we want to unfold the polarization states I, Q, U, and
-V, the above table is *equivalent* to:
+array dimension into multiple columns in the data table.
+For example, if we want to unfold the polarization components *I*,
+*Q*, *U*, and *V*, the above table is *equivalent* to:
 
-Source | Baseline  | I                  | Q   | U   | V
------- | --------- | ------------------ | --- | --- | ---
-M87    | ALMA-ALMA | Vis[s, t, b, c, d] | ... | ... | ...
-M87    | ALMA-APEX | Vis[s, t, b, c, d] | ... | ... | ...
-...    | ...       | ...                | ... | ... | ...
+Source | Baseline  | *I*              | *Q* | *U* | *V*
+------ | --------- | ---------------- | --- | --- | ---
+M87    | ALMA-ALMA | `Vis[s,t,b,c,d]` | ... | ... | ...
+M87    | ALMA-APEX | `Vis[s,t,b,c,d]` | ... | ... | ...
+...    | ...       | ...              | ... | ... | ...
 
-This unfolding does not require a significant data transformation.
+This unfolding does not require a significant data movement.
