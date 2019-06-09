@@ -33,9 +33,6 @@ kilobytes along its data processing pipeline.
   model comparison, results kilobytes (kB) of images or plots, and
   helps astronomers answer the project's science questions.
 
-
-## Programming Paradigms
-
 Clearly, with data volumes spread such a large range, very different
 computation approaches are needed in different steps.
 
