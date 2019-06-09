@@ -102,27 +102,27 @@ visibility arrays in a global array access it by the row number of the
 table.
 Anyway, to "unfold" one of these dense discrete labels, we turn the
 array dimension into multiple columns in the data table.
-For example, if we want to unfold the polarization components *I*,
-*Q*, *U*, and *V*, the above table is *equivalent* to:
+For example, if we want to unfold the scan dimension, the above table
+is *equivalent* to:
 
-Source | Baseline  | *I*              | *Q* | *U* | *V*
+Source | Baseline  | s0               | s1  | s2  | ...
 ------ | --------- | ---------------- | --- | --- | ---
-M87    | ALMA-ALMA | `Vis[s,t,b,c,d]` | ... | ... | ...
-M87    | ALMA-APEX | `Vis[s,t,b,c,d]` | ... | ... | ...
+M87    | ALMA-ALMA | `Vis[p,t,b,c,d]` | ... | ... | ...
+M87    | ALMA-APEX | `Vis[p,t,b,c,d]` | ... | ... | ...
 ...    | ...       | ...              | ... | ... | ...
 
-This unfolding does not require a significant data movement.
+This unfolding can be made so that it does not require significant
+data movement.
 The operation that requires data movement is to turn the columns into
 rows:
 
-Source | Baseline  | Pol | Visibility Data Array
------- | --------- | --- | ---------------------
-M87    | ALMA-ALMA | *I* | `Vis[s,t,b,c,d]`
-M87    | ALMA-ALMA | *Q* | `Vis[s,t,b,c,d]`
-M87    | ALMA-ALMA | *U* | `Vis[s,t,b,c,d]`
-M87    | ALMA-ALMA | *V* | `Vis[s,t,b,c,d]`
-M87    | ALMA-APEX | *I* | `Vis[s,t,b,c,d]`
-...    | ...       | ... | ...
+Source | Baseline  | Scan | Visibility Data Array
+------ | --------- | ---- | ---------------------
+M87    | ALMA-ALMA | t0   | `Vis[p,t,b,c,d]`
+M87    | ALMA-ALMA | t1   | `Vis[p,t,b,c,d]`
+M87    | ALMA-ALMA | ...  | `Vis[p,t,b,c,d]`
+M87    | ALMA-APEX | t0   | `Vis[p,t,b,c,d]`
+...    | ...       | ...  | ...
 
 This is often referred as the "unpivotion" operation.
 Although it is possible to unpivote any dimension in the visibility
