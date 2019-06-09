@@ -32,3 +32,24 @@ kilobytes along its data processing pipeline.
 - Finally, this MB scale data set is used in image reconstruction and
   model comparison, results kilobytes (kB) of images or plots, and
   helps astronomers answer the project's science questions.
+
+
+## Programming Paradigms
+
+Clearly, with data volumes spread such a large range, very different
+computation approaches are needed in different steps.
+
+- While edge computing may help reducing the data recorded at
+  telescope stations, the correlation step will likely require
+  distributed computing on computer clusters---either in the form of
+  more traditional high-performance computing or the new paradigm of
+  cloud computing.
+- Thanks to cloud computing, computer nodes are become fatter and it's
+  common to have 100 cores on a single server.
+  With the help of accelerators such as GPUs and FPGAs, fringe-fitting
+  and calibrations will likely require parallel computer within a
+  single powerful server.
+- The MB scale frequency and time averaged data set, while small in
+  size, is directly connected to the science.
+  Hence, interactive data analysis with good data visualization is
+  necessary.
