@@ -112,3 +112,19 @@ M87    | ALMA-APEX | `Vis[s,t,b,c,d]` | ... | ... | ...
 ...    | ...       | ...              | ... | ... | ...
 
 This unfolding does not require a significant data movement.
+The operation that requires data movement is to turn the columns into
+rows:
+
+Source | Baseline  | Pol | Visibility Data Array
+------ | --------- | --- | ---------------------
+M87    | ALMA-ALMA | *I* | `Vis[s,t,b,c,d]`
+M87    | ALMA-ALMA | *Q* | `Vis[s,t,b,c,d]`
+M87    | ALMA-ALMA | *U* | `Vis[s,t,b,c,d]`
+M87    | ALMA-ALMA | *V* | `Vis[s,t,b,c,d]`
+M87    | ALMA-APEX | *I* | `Vis[s,t,b,c,d]`
+...    | ...       | ... | ...
+
+This is often referred as the "unpivotion" operation.
+Although it is possible to unpivote any dimension in the visibility
+data array, the dense discrete labels are the more natural dimensions
+to unpivoate.
